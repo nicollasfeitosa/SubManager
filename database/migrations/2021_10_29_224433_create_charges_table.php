@@ -19,7 +19,7 @@ class CreateChargesTable extends Migration
             $table->string('client_id');
             $table->integer('days');
             $table->timestamp('charged_at')->useCurrent();
-            $table->timestamp('charged_expired');
+            $table->timestamp('charged_expired')->nullable();
             $table->integer('status')->default(1); // 2: pending, 1: active, 0: expired
             $table->timestamps();
         });
