@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::get('notification', 'App\Http\Controllers\DiscordNotification@send');
+Route::get('test', 'App\Http\Controllers\DiscordNotification@test');
+Route::get('verify', 'App\Http\Controllers\WebCommands@verifyCharges');
