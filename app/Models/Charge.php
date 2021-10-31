@@ -30,18 +30,13 @@ class Charge extends Model
         
         $today = Carbon::now();
 
-        $isExpired = $today->gte($chargedExpired);
-
-        if ($isExpired) {
+        if ($chargedExpired->lte($today)) {
             $this->status = self::STATUS_EXPIRED;
             $this->save();
             return self::STATUS_EXPIRED;
         }
 
-        // check if the charge is pending (remaing only a week to charge)
-        $isPending = $today->gte($chargedExpired->subWeek());
-
-        if ($isPending) {
+        if ($chargedExpired->lte($today->addWeek())) {
             $this->status = self::STATUS_PENDING;
             $this->save();
             return self::STATUS_PENDING;

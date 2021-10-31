@@ -47,7 +47,7 @@ class ViewCharges extends Command
                 'days',
                 'charged_at',
                 'charged_expired',
-                'active',
+                'status',
             ])->toArray()
         );
 
