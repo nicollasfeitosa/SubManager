@@ -88,15 +88,19 @@ class DiscordNotification extends Controller
 
         $remaningsDays = Carbon::now()->diffInDays(Carbon::parse($charge->charged_expired));
 
-        $title = "$client->name sua recarga expirou!";
-        $color = self::DANGER_COLOR;
+        $status = intval($charge->status);
 
-        if ($charge->status === 1) {
+        if ($status === 0) {
+            $title = "$client->name sua recarga expirou!";
+            $color = self::DANGER_COLOR;
+        }
+
+        if ($status === 1) {
             $title = "Recarga de $client->name";
             $color = self::SUCCESS_COLOR;
         }
 
-        if ($charge->status === 2) {
+        if ($status === 2) {
             $title = "$client->name sua recarga vai expirar em breve!";
             $color = self::WARN_COLOR;
         }
