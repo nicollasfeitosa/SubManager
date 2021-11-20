@@ -134,7 +134,7 @@ class DiscordNotification extends Controller
                     ],
                     "footer" => [
                         "text" => "Consultado",
-                        "icon_url" => "https://cdn.discordapp.com/avatars/233677267975274496/1348258bac45dbb64d549df29e50910a.webp?size=24"
+                        "icon_url" => self::ICON_URL
                     ],
                     "timestamp" => Carbon::now()
                 ]
