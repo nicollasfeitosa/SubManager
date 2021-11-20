@@ -14,8 +14,6 @@ class ClientController extends Controller
         $client = Client::where('discord_id', $discordId)->firstOrFail();
         $charge = Charge::where('client_id', $client->id)->first();
 
-        Artisan::call('verify:charges');
-
         (new DiscordNotification)->chargeVerify($charge);
         return response()->json('Alert to discord send!');
     }
