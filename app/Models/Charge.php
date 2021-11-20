@@ -30,13 +30,13 @@ class Charge extends Model
         
         $today = Carbon::now();
 
-        if ($chargedExpired->lte($today)) {
+        if ($today->gte($chargedExpired)) {
             $this->status = self::STATUS_EXPIRED;
             $this->save();
             return self::STATUS_EXPIRED;
         }
 
-        if ($chargedExpired->lte($today->addWeek())) {
+        if ($today->gte($chargedExpired->subWeek())) {
             $this->status = self::STATUS_PENDING;
             $this->save();
             return self::STATUS_PENDING;
