@@ -13,6 +13,9 @@ class DiscordNotification extends Controller
     public const SUCCESS_COLOR = 2346847;
     public const WARN_COLOR = 14730290;
     public const DANGER_COLOR = 14694706;
+    public const ICON_URL = "https://pbs.twimg.com/profile_images/1458401240661041152/LIPqT5i__400x400.jpg";
+    public const AVATAR_URL = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.complex.com%2Fcomplex%2Fimages%2Fc_fill%2Cg_center%2Cw_1200%2Ffl_lossy%2Cpg_1%2Cq_auto%2Fmqlimq5ifprz3klcoxpt%2Fspotify-logo&f=1&nofb=1";
+
 
     public function test()
     {
@@ -62,13 +65,13 @@ class DiscordNotification extends Controller
                     ],
                     "footer" => [
                         "text" => "Realizado em",
-                        "icon_url" => "https://cdn.discordapp.com/avatars/233677267975274496/1348258bac45dbb64d549df29e50910a.webp?size=24"
+                        "icon_url" => self::ICON_URL
                     ],
                     "timestamp" => $charge->charged_at
                 ]
             ],
             "username" => "Spotify Alert Sender",
-            "avatar_url" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.complex.com%2Fcomplex%2Fimages%2Fc_fill%2Cg_center%2Cw_1200%2Ffl_lossy%2Cpg_1%2Cq_auto%2Fmqlimq5ifprz3klcoxpt%2Fspotify-logo&f=1&nofb=1"
+            "avatar_url" => self::AVATAR_URL
         ];
 
         return Http::post($discord_webhook_url, $json);
