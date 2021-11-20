@@ -51,6 +51,9 @@ class VerifyCharges extends Command
             $validation = $charge->validate();
 
             if ($validation === 0) {
+                $charge->status = 0;
+                $charge->save();
+
                 # expired
                 $this->info('Charge: ' . $charge->id . ' EXPIROU');
                 $this->info('Expired at: ' . $expiredAt);
@@ -60,6 +63,9 @@ class VerifyCharges extends Command
             }
 
             if ($validation === 1) {
+                $charge->status = 1;
+                $charge->save();
+
                 # OK
                 $this->info('Charge: ' . $charge->id . ' TA OK');
                 $this->info('Expired at: ' . $expiredAt);
@@ -68,6 +74,9 @@ class VerifyCharges extends Command
             }
 
             if ($validation === 2) {
+                $charge->status = 2;
+                $charge->save();
+
                 # proximo a expirar
                 $this->info('Charge: ' . $charge->id . ' FALTA POUCO PRA EXPIRAR');
                 $this->info('Expired at: ' . $expiredAt);
